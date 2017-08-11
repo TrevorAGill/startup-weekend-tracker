@@ -57,6 +57,6 @@ public class EventTest {
         Event newEvent = createNewEvent();
         Event newEvent2 = new Event("Test Event 2","Test Description2");
         Attendee Trevor = new Attendee("Trevor", "WEI", "trevor.a.gill@gmail.com", 30,newEvent2);
-        assertEquals(3, newEvent2.getAllAttendees().size());
+        assertEquals(1, newEvent2.getAllAttendees().size());
     }
 }

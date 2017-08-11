@@ -2,8 +2,8 @@
 
 
     <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#">Home</a></li>
-        <li role="presentation"><a href="/item/new">Add New Event</a></li>
+        <li role="presentation" class="active"><a href="/">Home</a></li>
+        <li role="presentation"><a href="/event/new">Add New Event</a></li>
     </ul>
     <div class="container">
         <!--begin main template-->
@@ -11,16 +11,43 @@
             <h1>All Events</h1>
         </div>
         <div class="well">
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
             {{#if events}}
+                <table>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Description</th>
+                    </tr>
                 {{#each events}}
-                    <a href="/event/{{ id }}">{{ eventName }}</a>
+                    <tr>
+                        <td> <a href="/event/{{ id }}">{{ name }}</a> </td>
+                        <td>{{ description }}</td>
+                    </tr>
+
                 {{/each}}
+                </table>
+
             {{else}}
                 <p>There are no events at this time.</p>
             {{/if}}
         </div>
     </div>
-
 
 {{/partial}}
 {{> layout.hbs}}

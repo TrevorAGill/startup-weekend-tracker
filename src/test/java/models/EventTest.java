@@ -51,4 +51,12 @@ public class EventTest {
         newEvent.updateEvent("Not A Test Event", "Are we really talking about tests? TESTS?" );
         assertEquals("Not A Test Event", newEvent.getName());
     }
+
+    @Test
+    public void Event_AddAttendeeToAnEvent_1() throws Exception {
+        Event newEvent = createNewEvent();
+        Event newEvent2 = new Event("Test Event 2","Test Description2");
+        Attendee Trevor = new Attendee("Trevor", "WEI", "trevor.a.gill@gmail.com", 30,newEvent2);
+        assertEquals(3, newEvent2.getAllAttendees().size());
+    }
 }

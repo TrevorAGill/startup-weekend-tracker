@@ -8,7 +8,7 @@ public class Event {
     int id;
     private String name;
     private String description;
-    private List<Attendee> allAttendees;
+    private static ArrayList<Attendee> allAttendees = new ArrayList<Attendee>();
     private static ArrayList<Event> allEvents = new ArrayList<Event>();
     private static int eventListSize;
 
@@ -63,12 +63,12 @@ public class Event {
         this.description = description;
     }
 
-    public List<Attendee> getAllAttendees() {
+    public static List<Attendee> getAllAttendees() {
         return allAttendees;
     }
 
-    public void setAllAttendees(List<Attendee> allAttendees) {
-        this.allAttendees = allAttendees;
+    public static void setAllAttendees(ArrayList<Attendee> allAttendees) {
+        Event.allAttendees = allAttendees;
     }
 
     public static ArrayList<Event> getAllEvents() {

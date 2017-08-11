@@ -1,0 +1,59 @@
+{{#partial "content"}}
+
+
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a href="/">Home</a></li>
+        <li role="presentation"><a href="/events">All Events</a></li>
+        <li role="presentation" class="active"><a href="/events">This Event</a></li>
+        <li role="presentation"><a href="/attendee/new">Add New Attendee</a></li>
+    </ul>
+    <div class="container">
+        <!--begin main template-->
+        <div class="page-header">
+            <h1>{{foundEvent.name}}<small>{{foundEvent.description}}</small></h1>
+        </div>
+        <div class="well">
+            <style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+            {{#if attendees}}
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Company</th>
+                        <th>Email</th>
+                    </tr>
+                    {{#each attendees}}
+                        <tr>
+                            <td>{{name}}</td>
+                            <td>{{age}}</td>
+                            <td>{{company}}</td>
+                            <td>{{email}}</td>
+                        </tr>
+
+                    {{/each}}
+                </table>
+
+            {{else}}
+                <p>There are currently no attendees registered for this event.</p>
+            {{/if}}
+        </div>
+    </div>
+
+{{/partial}}
+{{> layout.hbs}}

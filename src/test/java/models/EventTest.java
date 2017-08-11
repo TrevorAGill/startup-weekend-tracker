@@ -43,7 +43,7 @@ public class EventTest {
         Event newEvent = createNewEvent();
         Event newEvent2 = new Event("Test Event 2","Test Description2");
         Event newEvent3 = new Event("Test Event 3","Test Description3");
-        assertEquals(newEvent2, Event.findEventById(2));
+        assertEquals(newEvent2, Event.findById(2));
     }
 
     @Test

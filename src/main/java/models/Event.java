@@ -37,7 +37,7 @@ public class Event {
         return allAttendees;
     }
 
-    public static Event findEventById(int id){
+    public static Event findById(int id){
         for(Event event : allEvents){
             if(id == event.id){
                 return event;
@@ -52,6 +52,10 @@ public class Event {
     }
 
     //Getters + Setters
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }

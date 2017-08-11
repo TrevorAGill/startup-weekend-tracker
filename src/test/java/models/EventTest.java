@@ -24,6 +24,6 @@ public class EventTest {
     @Test
     public void Event_GetEventName_TestEvent() throws Exception {
         Event newEvent = createNewEvent();
-        assertEquals("Test Event2", newEvent.getName());
+        assertEquals("Test Event", newEvent.getName());
     }
 }

@@ -13,7 +13,6 @@ public class Attendee {
         this.setEmail(email);
         this.setAge(age);
         this.event = event;
-
         event.setAllAttendees(this);
     }
 

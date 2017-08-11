@@ -43,7 +43,7 @@ public class App {
             String name = req.queryParams("eventName");
             String description = req.queryParams("eventDescription");
             ArrayList<Attendee> attendees = new ArrayList<Attendee>();
-            Event newEvent = new Event(name, description,attendees);
+            Event newEvent = new Event(name, description);
             int id = newEvent.getId();
             model.put("id",id);
             model.put("newEvent",newEvent);
@@ -101,8 +101,6 @@ public class App {
 
             return new ModelAndView(model, "event-detail.hbs");
         }, new HandlebarsTemplateEngine());
-
-
 
 
     }

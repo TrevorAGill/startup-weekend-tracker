@@ -8,23 +8,23 @@ public class Event {
     int id;
     private String name;
     private String description;
-    private ArrayList<Attendee> allAttendees = new ArrayList<Attendee>();
+    private ArrayList<Attendee> allAttendees;
     private static ArrayList<Event> allEvents = new ArrayList<Event>();
     private static int eventListSize;
 
     //Constructor
-    public Event(String name,String description,ArrayList<Attendee> allAttendees){
+    public Event(String name,String description){
         this.name = name;
         this.description = description;
-        this.allAttendees = allAttendees;
+        this.allAttendees = new ArrayList<Attendee>();
         eventListSize++;
         this.id = eventListSize;
         allEvents.add(this);
     }
 
     public static Event createNewEvent(){
-        ArrayList<Attendee> allAttendees = new ArrayList<Attendee>();
-        Event newEvent = new Event("Test Event","Test Description", allAttendees);
+//        ArrayList<Attendee> allAttendees = new ArrayList<Attendee>();
+        Event newEvent = new Event("Test Event","Test Description");
         return newEvent;
     }
 

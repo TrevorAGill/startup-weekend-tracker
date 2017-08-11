@@ -49,6 +49,6 @@ public class EventTest {
     public void Event_UpdateEventDetails_NotATestEvent() throws Exception {
         Event newEvent = createNewEvent();
         newEvent.updateEvent("Not A Test Event", "Are we really talking about tests? TESTS?" );
-        assertEquals("Note A Test Event2", newEvent.getName());
+        assertEquals("Not A Test Event", newEvent.getName());
     }
 }

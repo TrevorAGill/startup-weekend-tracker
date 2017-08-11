@@ -16,6 +16,7 @@ public class EventTest {
     @After
     public void tearDown() throws Exception {
         Event.clearAllEvents(Event.getAllEvents());
+        Event.clearAllAttendees(Event.getAllAttendees());
     }
 
     @Test
@@ -52,11 +53,4 @@ public class EventTest {
         assertEquals("Not A Test Event", newEvent.getName());
     }
 
-    @Test
-    public void Event_AddAttendeeToAnEvent_1() throws Exception {
-        Event newEvent = createNewEvent();
-        Event newEvent2 = new Event("Test Event 2","Test Description2");
-        Attendee Trevor = new Attendee("Trevor", "WEI", "trevor.a.gill@gmail.com", 30,newEvent2);
-        assertEquals(1, newEvent2.getAllAttendees().size());
-    }
 }

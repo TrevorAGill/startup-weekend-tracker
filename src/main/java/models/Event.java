@@ -32,6 +32,11 @@ public class Event {
         return allEvents;
     }
 
+    public static ArrayList<Attendee> clearAllAttendees(ArrayList<Attendee> allAttendees){
+        allAttendees.clear();
+        return allAttendees;
+    }
+
     public static Event findEventById(int id){
         for(Event event : allEvents){
             if(id == event.id){
@@ -63,7 +68,7 @@ public class Event {
         this.description = description;
     }
 
-    public static List<Attendee> getAllAttendees() {
+    public static ArrayList<Attendee> getAllAttendees() {
         return allAttendees;
     }
 

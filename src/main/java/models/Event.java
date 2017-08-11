@@ -47,6 +47,15 @@ public class Event {
         return null;
     }
 
+    public Attendee findAttendeeById(int attendeeId) {
+        Attendee foundAttendee = null;
+        for (Attendee thisone : allAttendees) {
+            if (thisone.getId() == (attendeeId))
+                foundAttendee = thisone;
+        }
+        return foundAttendee;
+    }
+
     public void updateEvent(String newName, String newDescription){
         this.name = newName;
         this.description = newDescription;
@@ -77,8 +86,10 @@ public class Event {
         return allAttendees;
     }
 
-    public void setAllAttendees(Attendee attendee) {
-        allAttendees.add(attendee);
+    public void setAllAttendees(Attendee addToEvent) {
+        int thisID = addToEvent.getId();
+        Attendee thisAttendee = findAttendeeById(thisID);
+        allAttendees.add(thisAttendee);
     }
 
     public static ArrayList<Event> getAllEvents() {

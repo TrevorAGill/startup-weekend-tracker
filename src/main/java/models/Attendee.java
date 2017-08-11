@@ -5,6 +5,11 @@ public class Attendee {
     private String company;
     private String email;
     private int age;
+
+
+
+    private int id;
+    private static int attendeeSize;
     Event event;
 
     public Attendee(String name, String company, String email, int age, Event event){
@@ -12,6 +17,8 @@ public class Attendee {
         this.setCompany(company);
         this.setEmail(email);
         this.setAge(age);
+        attendeeSize++;
+        this.id = attendeeSize;
         this.event = event;
         event.setAllAttendees(this);
     }
@@ -24,6 +31,10 @@ public class Attendee {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getCompany() {

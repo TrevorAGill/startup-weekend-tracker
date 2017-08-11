@@ -31,7 +31,7 @@ public class AttendeeTest {
     public void Attendee_RetrieveNameOfAnAttendee_Trevor() throws Exception {
         Event newEvent = createNewEvent();
         Attendee Trevor = new Attendee("Trevor", "WEI", "trevor.a.gill@gmail.com", 30,newEvent);
-        assertEquals("Trevort",Trevor.name);
+        assertEquals("Trevor",Trevor.name);
     }
 
     @Test

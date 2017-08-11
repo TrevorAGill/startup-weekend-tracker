@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static models.Event.createNewEvent;
+import static models.Event.getAllEvents;
 import static org.junit.Assert.*;
 
 public class EventTest {
@@ -14,6 +15,7 @@ public class EventTest {
 
     @After
     public void tearDown() throws Exception {
+        Event.clearAllEvents(Event.getAllEvents());
     }
 
     @Test
@@ -33,5 +35,13 @@ public class EventTest {
         Event newEvent = createNewEvent();
         Event newEvent2 = new Event("Test Event 2","Test Description2");
         assertEquals(2, Event.getAllEvents().size());
+    }
+
+    @Test
+    public void Event_RetrieveSpecificEventById_() throws Exception {
+        Event newEvent = createNewEvent();
+        Event newEvent2 = new Event("Test Event 2","Test Description2");
+        Event newEvent3 = new Event("Test Event 3","Test Description3");
+        assertEquals(newEvent2, Event.findEventById(3));
     }
 }

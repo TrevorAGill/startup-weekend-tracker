@@ -1,5 +1,6 @@
 package models;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,21 @@ public class Event {
         Event newEvent = new Event("Test Event","Test Description");
         return newEvent;
     }
+
+    public static ArrayList<Event> clearAllEvents(ArrayList<Event> allEvents){
+        allEvents.clear();
+        return allEvents;
+    }
+
+    public static Event findEventById(int id){
+        for(Event event : allEvents){
+            if(id == event.id){
+                return event;
+            }
+        }
+        return null;
+    }
+
     //Getters + Setters
     public String getName() {
         return name;
@@ -50,7 +66,7 @@ public class Event {
         this.allAttendees = allAttendees;
     }
 
-    public static List<Event> getAllEvents() {
+    public static ArrayList<Event> getAllEvents() {
         return allEvents;
     }
 

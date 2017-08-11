@@ -32,6 +32,6 @@ public class EventTest {
     public void Event_EnsureAllEventsArrayHoldsAllEvents_2() throws Exception {
         Event newEvent = createNewEvent();
         Event newEvent2 = new Event("Test Event 2","Test Description2");
-        assertEquals(3, Event.getAllEvents().size());
+        assertEquals(2, Event.getAllEvents().size());
     }
 }

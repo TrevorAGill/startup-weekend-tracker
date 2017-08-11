@@ -28,6 +28,13 @@ public class AttendeeTest {
     }
 
     @Test
+    public void Attendee_RetrieveNameOfAnAttendee_Trevor() throws Exception {
+        Event newEvent = createNewEvent();
+        Attendee Trevor = new Attendee("Trevor", "WEI", "trevor.a.gill@gmail.com", 30,newEvent);
+        assertEquals("Trevort",Trevor.name);
+    }
+
+    @Test
     public void Attendee_AddAttendeeToAnEvent_1() throws Exception {
         Event newEvent = createNewEvent();
         Event newEvent2 = new Event("Test Event 2","Test Description2");

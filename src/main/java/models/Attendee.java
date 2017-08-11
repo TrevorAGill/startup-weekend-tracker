@@ -5,15 +5,16 @@ public class Attendee {
     private String company;
     private String email;
     private int age;
-//    Event event;
+    Event event;
 
-    public Attendee(String name, String company, String email, int age){
+    public Attendee(String name, String company, String email, int age, Event event){
         this.setName(name);
         this.setCompany(company);
         this.setEmail(email);
         this.setAge(age);
-//        this.event = event;
-        Event.getAllAttendees().add(this);
+        this.event = event;
+
+        event.setAllAttendees(this);
     }
 
 

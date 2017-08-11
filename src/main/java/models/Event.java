@@ -8,12 +8,12 @@ public class Event {
     int id;
     private String name;
     private String description;
-    private static ArrayList<Attendee> allAttendees = new ArrayList<Attendee>();
+    private ArrayList<Attendee> allAttendees = new ArrayList<Attendee>();
     private static ArrayList<Event> allEvents = new ArrayList<Event>();
     private static int eventListSize;
 
     //Constructor
-    public Event(String name,String description){
+    public Event(String name,String description,ArrayList<Attendee> allAttendees){
         this.name = name;
         this.description = description;
         this.allAttendees = allAttendees;
@@ -23,7 +23,8 @@ public class Event {
     }
 
     public static Event createNewEvent(){
-        Event newEvent = new Event("Test Event","Test Description");
+        ArrayList<Attendee> allAttendees = new ArrayList<Attendee>();
+        Event newEvent = new Event("Test Event","Test Description", allAttendees);
         return newEvent;
     }
 
@@ -72,12 +73,12 @@ public class Event {
         this.description = description;
     }
 
-    public static ArrayList<Attendee> getAllAttendees() {
+    public ArrayList<Attendee> getAllAttendees() {
         return allAttendees;
     }
 
-    public static void setAllAttendees(ArrayList<Attendee> allAttendees) {
-        Event.allAttendees = allAttendees;
+    public void setAllAttendees(Attendee attendee) {
+        allAttendees.add(attendee);
     }
 
     public static ArrayList<Event> getAllEvents() {

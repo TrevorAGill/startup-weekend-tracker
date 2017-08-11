@@ -1,35 +1,17 @@
 {{#partial "content"}}
 
-    {{#if editItem}}
+    {{#if editEvent}}
 
         <div class="well">
-            <h1>Edit Item</h1>
-            <form action="/item/{{editItem.id}}/edit" method="post">
+            <h1>Edit Event</h1>
+            <form action="/event/{{editEvent.id}}/edit" method="post">
                 <div class ="form-group">
-                    <label for="itemName">Name</label>
-                    <input id="itemName" name="itemName" type="text" placeholder="{{editItem.itemName}}">
+                    <label for="eventName">Name</label>
+                    <input id="eventName" name="eventName" type="text" placeholder="{{editEvent.eventName}}">
                 </div>
                 <div class ="form-group">
-                    <label for="itemPrice">Price</label>
-                    <input id="itemPrice" name="itemPrice" type="text" value={{editItem.itemPrice}}>
-                </div>
-                <div class="form-group">
-                    <label for="itemWeight">Weight</label>
-                    <input id="itemWeight" name="itemWeight" type="text"  value={{editItem.itemWeight}}>
-                </div>
-                <div class ="form-group">
-                    <label for="purchased">Item Purchased?</label>
-                    <select class="form-control" id="purchased" value={{editItem.purchased}}>
-                        <option value="true">Yes</option>
-                        <option value="false">No</option>
-                    </select>
-                </div>
-                <div class ="form-group">
-                    <label for="packed">Item Packed?</label>
-                    <select class="form-control" id="packed" value={{editItem.packed}}>
-                        <option value="true">Yes</option>
-                        <option value="false">No</option>
-                    </select>
+                    <label for="eventDescription">Description</label>
+                    <input id="eventDescription" name="eventDescription" type="text" placeholder="{{editEvent.eventDescription}}">
                 </div>
                 <button type="submit" class="btn btn-success">Go!</button>
             </form>

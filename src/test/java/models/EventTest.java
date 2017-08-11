@@ -21,9 +21,17 @@ public class EventTest {
         Event newEvent = createNewEvent();
         assertTrue(newEvent instanceof Event);
     }
+
     @Test
     public void Event_GetEventName_TestEvent() throws Exception {
         Event newEvent = createNewEvent();
         assertEquals("Test Event", newEvent.getName());
+    }
+
+    @Test
+    public void Event_EnsureAllEventsArrayHoldsAllEvents_2() throws Exception {
+        Event newEvent = createNewEvent();
+        Event newEvent2 = new Event("Test Event 2","Test Description2");
+        assertEquals(3, Event.getAllEvents().size());
     }
 }

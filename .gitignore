@@ -39,6 +39,4 @@ build/
 Gradlew
 Gradlew.bat
 settings.gradle
-build.gradle
 gradle/wrapper/gradle-wrapper.properties
-src/

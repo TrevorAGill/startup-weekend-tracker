@@ -41,6 +41,11 @@ public class Event {
         return null;
     }
 
+    public void updateEvent(String newName, String newDescription){
+        this.name = newName;
+        this.description = newDescription;
+    }
+
     //Getters + Setters
     public String getName() {
         return name;

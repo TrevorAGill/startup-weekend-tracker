@@ -44,4 +44,11 @@ public class EventTest {
         Event newEvent3 = new Event("Test Event 3","Test Description3");
         assertEquals(newEvent2, Event.findEventById(2));
     }
+
+    @Test
+    public void Event_UpdateEventDetails_NotATestEvent() throws Exception {
+        Event newEvent = createNewEvent();
+        newEvent.updateEvent("Not A Test Event", "Are we really talking about tests? TESTS?" );
+        assertEquals("Note A Test Event2", newEvent.getName());
+    }
 }

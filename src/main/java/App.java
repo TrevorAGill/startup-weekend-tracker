@@ -84,17 +84,22 @@ public class App {
             String company = req.queryParams("attendeeCompany");
             String email = req.queryParams("attendeeEmail");
             int age = Integer.parseInt(req.queryParams("attendeeAge"));
-            Event event = Event.findById(1);
+            Event event = req.session().attribute("currentEvent");
+            int eventId = req.session().attribute("currentEventId");
             Attendee newAttendee = new Attendee(name, company, email, age, event);
+            String redirectAddress = "/event/" + eventId;
             model.put("newAttendee",newAttendee);
-            res.redirect("/events");
+            res.redirect(redirectAddress);
             return null;
         });
 
         //load event detail page with all attendees
         get("/event/:id", (req, res) -> {
             Map<String,Object> model = new HashMap<>();
+            int eventId = Integer.parseInt(req.params("id"));
             Event foundEvent = Event.findById(Integer.parseInt(req.params("id")));
+            req.session().attribute("currentEventId", eventId);
+            req.session().attribute("currentEvent", foundEvent);
             ArrayList<Attendee> attendees = foundEvent.getAllAttendees();
             model.put("foundEvent", foundEvent);
             model.put("attendees", attendees);

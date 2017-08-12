@@ -18,7 +18,6 @@ public class EventTest {
     @After
     public void tearDown() throws Exception {
         Event.clearAllEvents(Event.getAllEvents());
-//        Event.clearAllAttendees(Event.getAllAttendees());
     }
 
     @Test
@@ -56,6 +55,15 @@ public class EventTest {
         Event newEvent = createNewEvent();
         newEvent.updateEvent("Not A Test Event", "Are we really talking about tests? TESTS?" );
         assertEquals("Not A Test Event", newEvent.getName());
+    }
+
+    @Test
+    public void Event_UpdateEventAttendanceCount_2() throws Exception {
+        Event newEvent = createNewEvent();
+        Attendee newAttendee = new Attendee("Test","trevor","t", 30, newEvent);
+        Attendee newAttendee2 = new Attendee("Test","trevor","t", 33, newEvent);
+        int attendeeCount = newEvent.getAttendeeCount();
+        assertEquals(2, attendeeCount);
     }
 
 }

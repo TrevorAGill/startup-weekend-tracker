@@ -19,8 +19,8 @@ An application to allow for the creation of and tracking of events and attendees
 | Behavior      | Example Input      | Example Output       |
 | ------------- | ------------- | ------------- |
 | The application should allow a new event to be created | Event Name: How to setup a .gitignore file | New Event: How to setup a .gitignore file |
-| The application should allow one or more attendees to be added to an event | Attendee Name: Trevor Gill | New Attendee: Trevor Gill, Event: How to setup a .gitignore file |
 | The application should allow events to be updated | New Event Name: Git Ignored: An Odyssey | Event Name: Git Ignored: An Odyssey |
+| The application should allow one or more attendees to be added to an event | Attendee Name: Trevor Gill | New Attendee: Trevor Gill, Event: How to setup a .gitignore file |
 
 # Known Bugs
 

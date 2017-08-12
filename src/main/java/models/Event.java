@@ -11,6 +11,7 @@ public class Event {
     private ArrayList<Attendee> allAttendees;
     private static ArrayList<Event> allEvents = new ArrayList<Event>();
     private static int eventListSize;
+    private int attendeeCount;
 
     //Constructor
     public Event(String name,String description){
@@ -20,10 +21,10 @@ public class Event {
         eventListSize++;
         this.id = eventListSize;
         allEvents.add(this);
+        this.attendeeCount = allAttendees.size();
     }
 
     public static Event createNewEvent(){
-//        ArrayList<Attendee> allAttendees = new ArrayList<Attendee>();
         Event newEvent = new Event("Test Event","Test Description");
         return newEvent;
     }
@@ -33,11 +34,6 @@ public class Event {
         return allEvents;
     }
 
-    public static ArrayList<Attendee> clearAllAttendees(ArrayList<Attendee> allAttendees){
-        allAttendees.clear();
-        return allAttendees;
-    }
-
     public static Event findById(int id){
         for(Event event : allEvents){
             if(id == event.id){
@@ -45,15 +41,6 @@ public class Event {
             }
         }
         return null;
-    }
-
-    public Attendee findAttendeeById(int attendeeId) {
-        Attendee foundAttendee = null;
-        for (Attendee thisone : allAttendees) {
-            if (thisone.getId() == (attendeeId))
-                foundAttendee = thisone;
-        }
-        return foundAttendee;
     }
 
     public void updateEvent(String newName, String newDescription){
@@ -87,9 +74,7 @@ public class Event {
     }
 
     public void setAllAttendees(Attendee addToEvent) {
-        int thisID = addToEvent.getId();
-        Attendee thisAttendee = findAttendeeById(thisID);
-        allAttendees.add(thisAttendee);
+        allAttendees.add(addToEvent);
     }
 
     public static ArrayList<Event> getAllEvents() {
@@ -98,5 +83,13 @@ public class Event {
 
     public static void setAllEvents(ArrayList<Event> allEvents) {
         Event.allEvents = allEvents;
+    }
+
+    public int getAttendeeCount() {
+        return attendeeCount;
+    }
+
+    public void setAttendeeCount() {
+        this.attendeeCount++;
     }
 }

@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  background: url("/images/background.jpeg");
+  background: url("/images/background4.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -15,7 +15,32 @@ a {
   color: white;
 }
 
+small {
+    color: white;
+    margin-left: 30px;
+}
+
 .blacklink {
   color: blue;
   text-decoration: underline;
+}
+
+.well {
+    margin-top: 30px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
 }

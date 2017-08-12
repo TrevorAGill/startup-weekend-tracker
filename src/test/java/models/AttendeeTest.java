@@ -17,7 +17,6 @@ public class AttendeeTest {
     @After
     public void tearDown() throws Exception {
         Event.clearAllEvents(Event.getAllEvents());
-//        Event.clearAllAttendees(Event.getAllAttendees());
     }
 
     @Test

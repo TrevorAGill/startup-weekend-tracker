@@ -50,12 +50,17 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             String name = req.queryParams("eventName");
             String description = req.queryParams("eventDescription");
-//            ArrayList<Attendee> attendees = new ArrayList<Attendee>();
             Event newEvent = new Event(name, description);
             eventDao.addEvent(newEvent);
-//            int id = newEvent.getId();
-//            model.put("id",id);
-//            model.put("newEvent",newEvent);
+            res.redirect("/events");
+            return null;
+        });
+
+        //delete event
+        get("/event/:id/delete", (req, res)->{
+            Map<String, Object> model = new HashMap<>();
+            int eventIdToDelete = Integer.parseInt(req.params("id"));
+            eventDao.deleteEventById(eventIdToDelete);
             res.redirect("/events");
             return null;
         });

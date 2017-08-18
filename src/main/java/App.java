@@ -18,7 +18,7 @@ import static spark.Spark.staticFileLocation;
 public class App {
     public static void main(String[] args) {
         staticFileLocation("/public");
-        String connectionString = "jdbc:h2:~/events2.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
+        String connectionString = "jdbc:h2:~/events3.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         Sql2oEventDao eventDao = new Sql2oEventDao(sql2o);
         Sql2oAttendeDao attendeeDao = new Sql2oAttendeDao(sql2o);
@@ -74,7 +74,9 @@ public class App {
             String newName = req.queryParams("eventName");
             String newDescription = req.queryParams("eventDescription");
             int eventId = Integer.parseInt(req.params("id"));
-            eventDao.updateEventById(newName, newDescription,eventId);
+            Event event = eventDao.findEventById(eventId);
+            int attendeeCount = event.getAttendeeCount();
+            eventDao.updateEventById(newName, newDescription, attendeeCount, eventId);
             res.redirect("/event/" + eventId);
             return null;
         });
@@ -95,10 +97,15 @@ public class App {
             String email = req.queryParams("attendeeEmail");
             int age = Integer.parseInt(req.queryParams("attendeeAge"));
             int eventId = Integer.parseInt(req.params("id"));
-            model.put("id",eventId);
             Attendee newAttendee = new Attendee(name, company, email, age, eventId);
             attendeeDao.addAttendee(newAttendee);
             model.put("newAttendee", newAttendee);
+            //update event attendance count
+            Event event = eventDao.findEventById(eventId);
+            event.setAttendeeCount();
+            int newEventCount = event.getAttendeeCount();
+            eventDao.updateEventById(event.getName(),event.getDescription(),newEventCount,eventId);
+            model.put("id",eventId);
             res.redirect("/event/" + eventId);
             return null;
         });

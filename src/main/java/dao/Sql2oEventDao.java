@@ -49,12 +49,13 @@ public class Sql2oEventDao implements EventDao {
     }
 
     @Override
-    public void updateEventById(String name, String description, int id) {
+    public void updateEventById(String name, String description, int attendeeCount, int id) {
         try (Connection con = sql2o.open()) {
-            con.createQuery("UPDATE events SET (name, description) = (:name, :description) WHERE id = :id")
+            con.createQuery("UPDATE events SET (name, description, attendeeCount) = (:name, :description, :attendeeCount) WHERE id = :id")
                     .addParameter("id", id)
                     .addParameter("name", name)
                     .addParameter("description", description)
+                    .addParameter("attendeeCount", attendeeCount)
                     .executeUpdate();
         } catch (Sql2oException ex) {
             System.out.println(ex);
@@ -66,6 +67,18 @@ public class Sql2oEventDao implements EventDao {
         try (Connection con = sql2o.open()) {
             con.createQuery("DELETE FROM events WHERE id = :id")
                     .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    @Override
+    public void incrementAttendeeCount(int id, int attendeeCount){
+        try (Connection con = sql2o.open()) {
+            con.createQuery("UPDATE events SET (attendeeCount) WHERE id = :id")
+                    .addParameter("id", id)
+                    .addParameter("attendeeCount", attendeeCount)
                     .executeUpdate();
         } catch (Sql2oException ex) {
             System.out.println(ex);

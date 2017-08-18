@@ -12,7 +12,9 @@ public interface EventDao {
 
     Event findEventById(int id);
 
-    void updateEventById(String name, String description, int id);
+    void updateEventById(String name, String description, int attendeeCount, int id);
 
     void deleteEventById(int id);
+
+    void incrementAttendeeCount(int id, int attendeeCount);
 }

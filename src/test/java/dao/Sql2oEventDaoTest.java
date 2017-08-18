@@ -57,16 +57,16 @@ public class Sql2oEventDaoTest {
         Event foundEvent = eventDao.findEventById(thisId);
         assertEquals(thisId, foundEvent.getId());
     }
-//
-//    @Test
-//    public void returnListOfAllEvents() throws Exception {
-//        Event newEvent = newEvent();
-//        Event newEvent2 = new Event("Lewis and Clarke", 4, 3);
-//        EventDao.addEvent(newEvent);
-//        EventDao.addEvent(newEvent2);
-//        assertEquals(2, EventDao.getAllEvents().size());
-//    }
-//
+
+    @Test
+    public void returnListOfAllEvents() throws Exception {
+        Event newEvent = newEvent();
+        Event newEvent2 = new Event("2nd Event", "It's another event");
+        eventDao.addEvent(newEvent);
+        eventDao.addEvent(newEvent2);
+        assertEquals(2, eventDao.getAllEvents().size());
+    }
+
 //    @Test
 //    public void updateASingleEvent() throws Exception {
 //        Event newEvent = newEvent();

@@ -35,11 +35,11 @@ public class Sql2oEventDaoTest {
         assertTrue(newEvent instanceof Event);
     }
 
-//    @Test
-//    public void getNameFromNewEvent_PCT () throws Exception {
-//        Event newEvent = newEvent();
-//        assertEquals("Utilizing DAO",newEvent.getName());
-//    }
+    @Test
+    public void getNameFromNewEvent_PCT () throws Exception {
+        Event newEvent = newEvent();
+        assertEquals("Utilizing DAO",newEvent.getName());
+    }
 
 //    @Test
 //    public void getNameFromNewEvent_UtilizingDAO () throws Exception {

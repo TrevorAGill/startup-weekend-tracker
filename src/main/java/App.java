@@ -26,8 +26,6 @@ public class App {
         //go to homepage
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-//            ArrayList<Event> items= Event.getAllEvents();
-//            model.put("items", items);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -56,15 +54,6 @@ public class App {
             return null;
         });
 
-        //delete event
-        get("/event/:id/delete", (req, res)->{
-            Map<String, Object> model = new HashMap<>();
-            int eventIdToDelete = Integer.parseInt(req.params("id"));
-            eventDao.deleteEventById(eventIdToDelete);
-            res.redirect("/events");
-            return null;
-        });
-
         //go to form to edit existing event
         get("/event/:id/edit", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
@@ -85,6 +74,26 @@ public class App {
             res.redirect("/event/" + eventId);
             return null;
         });
+
+        //delete event
+        get("/event/:id/delete", (req, res)->{
+            Map<String, Object> model = new HashMap<>();
+            int eventIdToDelete = Integer.parseInt(req.params("id"));
+            eventDao.deleteEventById(eventIdToDelete);
+            res.redirect("/events");
+            return null;
+        });
+
+        //load event detail page with all attendees
+        get("/event/:id", (req, res) -> {
+            Map<String,Object> model = new HashMap<>();
+            int eventId = Integer.parseInt(req.params("id"));
+            Event foundEvent = eventDao.findEventById(Integer.parseInt(req.params("id")));
+            List<Attendee> attendees = attendeeDao.getAllAttendeesByEvent(eventId);
+            model.put("foundEvent", foundEvent);
+            model.put("attendees", attendees);
+            return new ModelAndView(model, "event-detail.hbs");
+        }, new HandlebarsTemplateEngine());
 
         //show new attendee form
         get("/event/:id/attendee/new", (req, res) -> {
@@ -114,17 +123,6 @@ public class App {
             res.redirect("/event/" + eventId);
             return null;
         });
-
-        //load event detail page with all attendees
-        get("/event/:id", (req, res) -> {
-            Map<String,Object> model = new HashMap<>();
-            int eventId = Integer.parseInt(req.params("id"));
-            Event foundEvent = eventDao.findEventById(Integer.parseInt(req.params("id")));
-            List<Attendee> attendees = attendeeDao.getAllAttendeesByEvent(eventId);
-            model.put("foundEvent", foundEvent);
-            model.put("attendees", attendees);
-            return new ModelAndView(model, "event-detail.hbs");
-        }, new HandlebarsTemplateEngine());
 
         //load attendee edit form
         get("/event/:eventId/attendee/:id/edit", (req, res) -> {

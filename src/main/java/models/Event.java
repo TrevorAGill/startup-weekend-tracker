@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Event {
-    int id;
+    private int id;
     private String name;
     private String description;
 //    private ArrayList<Attendee> allAttendees;
@@ -17,38 +17,32 @@ public class Event {
     public Event(String name,String description){
         this.name = name;
         this.description = description;
-
 //        this.attendeeCount = allAttendees.size();
     }
 
-    public static Event createNewEvent(){
-        Event newEvent = new Event("Test Event","Test Description");
-        return newEvent;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Event event = (Event) o;
+
+        if (id != event.id) return false;
+        if (attendeeCount != event.attendeeCount) return false;
+        if (!name.equals(event.name)) return false;
+        return description != null ? description.equals(event.description) : event.description == null;
     }
 
-    public static ArrayList<Event> clearAllEvents(ArrayList<Event> allEvents){
-        allEvents.clear();
-        return allEvents;
-    }
-
-    public static Event findById(int id){
-        for(Event event : allEvents){
-            if(id == event.id){
-                return event;
-            }
-        }
-        return null;
-    }
-
-    public void updateEvent(String newName, String newDescription){
-        this.name = newName;
-        this.description = newDescription;
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + attendeeCount;
+        return result;
     }
 
     //Getters + Setters
-    public int getId() {
-        return id;
-    }
 
     public String getName() {
         return name;
@@ -66,21 +60,21 @@ public class Event {
         this.description = description;
     }
 
-    public ArrayList<Attendee> getAllAttendees() {
-        return allAttendees;
-    }
-
-    public void setAllAttendees(Attendee addToEvent) {
-        allAttendees.add(addToEvent);
-    }
-
-    public static ArrayList<Event> getAllEvents() {
-        return allEvents;
-    }
-
-    public static void setAllEvents(ArrayList<Event> allEvents) {
-        Event.allEvents = allEvents;
-    }
+//    public ArrayList<Attendee> getAllAttendees() {
+//        return allAttendees;
+//    }
+//
+//    public void setAllAttendees(Attendee addToEvent) {
+//        allAttendees.add(addToEvent);
+//    }
+//
+//    public static ArrayList<Event> getAllEvents() {
+//        return allEvents;
+//    }
+//
+//    public static void setAllEvents(ArrayList<Event> allEvents) {
+//        Event.allEvents = allEvents;
+//    }
 
     public int getAttendeeCount() {
         return attendeeCount;
@@ -88,5 +82,13 @@ public class Event {
 
     public void setAttendeeCount() {
         this.attendeeCount++;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -27,6 +27,11 @@ small {
 
 .well {
     margin-top: 30px;
+    background-color: #acb0b7;
+}
+
+.glyphicon {
+    color: black;
 }
 
 table {
@@ -42,5 +47,9 @@ td, th {
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: lightgray;
+}
+
+tr:nth-child(odd) {
+    background-color: white;
 }

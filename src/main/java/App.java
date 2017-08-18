@@ -90,7 +90,7 @@ public class App {
         get("/event/:id/attendee/new", (req, res) -> {
             Map<String,Object> model = new HashMap<>();
             int eventId = Integer.parseInt(req.params("id"));
-            model.put("id", eventId);
+            model.put("eventId", eventId);
             return new ModelAndView(model, "attendee-form.hbs");
         }, new HandlebarsTemplateEngine());
 

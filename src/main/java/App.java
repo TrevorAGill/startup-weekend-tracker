@@ -154,12 +154,11 @@ public class App {
         });
 
         //post edited attendee
-        get("/event/:foundEvent.id/delete", (req, res) -> {
+        get("/event/:foundEvent.id/attendee/:id/delete", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            int id = Integer.parseInt(req.params("id"));
-            Event event = eventDao.findEventById(eventId);
-            int attendeeCount = event.getAttendeeCount();
-            attendeeDao.updateAttendee(attendeeName,attendeeCompany,attendeeEmail,attendeeAge,eventId,id);
+            int eventId = Integer.parseInt(req.params("foundEvent.id"));
+            int attendeeToDelete = Integer.parseInt(req.params("id"));
+            attendeeDao.deleteAttendeeById(attendeeToDelete);
             res.redirect("/event/" + eventId);
             return null;
         });

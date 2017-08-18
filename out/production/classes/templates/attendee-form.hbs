@@ -1,42 +1,48 @@
 {{#partial "content"}}
+
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a href="#">Home</a></li>
+        <li role="presentation"><a href="/events">Event Listing</a></li>
+        <li role="presentation"><a href="/event/new">Add New Event</a></li>
+    </ul>
     <div class="well">
         {{#if attendee}}
             <h1>Edit this Attendee</h1>
             <form action="/event/{{eventId}}/attendee/{{attendee.id}}/edit" method="post">
                 <div class ="form-group">
                     <label for="attendeeName">Name</label>
-                    <input id="attendeeName" name="attendeeName" type="text" value="{{attendee.name}}">
+                    <input id="attendeeName" name="attendeeName" type="text" value="{{attendee.name}}" required>
                 </div>
                 <div class ="form-group">
                     <label for="attendeeCompany">Company</label>
-                    <input id="attendeeCompany" name="attendeeCompany" type="text" value="{{attendee.company}}">
+                    <input id="attendeeCompany" name="attendeeCompany" type="text" value="{{attendee.company}}" required>
                 </div>
                 <div class ="form-group">
                     <label for="attendeeEmail">Email</label>
-                    <input id="attendeeEmail" name="attendeeEmail" type="text" value="{{attendee.email}}">
+                    <input id="attendeeEmail" name="attendeeEmail" type="text" value="{{attendee.email}}" required>
                 </div>
                 <div class ="form-group">
                     <label for="attendeeAge">Age</label>
-                    <input id="attendeeAge" name="attendeeAge" type="text" value="{{attendee.age}}">
+                    <input id="attendeeAge" name="attendeeAge" type="text" value="{{attendee.age}}" required>
                 </div>
         {{else}}
             <h1>Add an Attendee</h1>
             <form action="/event/{{eventId}}/attendee/new" method="post">
                 <div class ="form-group">
                     <label for="attendeeName">Name</label>
-                    <input id="attendeeName" name="attendeeName" type="text">
+                    <input id="attendeeName" name="attendeeName" type="text" required>
                 </div>
                 <div class ="form-group">
                     <label for="attendeeCompany">Company</label>
-                    <input id="attendeeCompany" name="attendeeCompany" type="text">
+                    <input id="attendeeCompany" name="attendeeCompany" type="text" required>
                 </div>
                 <div class ="form-group">
                     <label for="attendeeEmail">Email</label>
-                    <input id="attendeeEmail" name="attendeeEmail" type="text">
+                    <input id="attendeeEmail" name="attendeeEmail" type="text" required>
                 </div>
                 <div class ="form-group">
                     <label for="attendeeAge">Age</label>
-                    <input id="attendeeAge" name="attendeeAge" type="text">
+                    <input id="attendeeAge" name="attendeeAge" type="text" required>
                 </div>
         {{/if}}
     <button type="submit" class="btn btn-success">Submit</button>

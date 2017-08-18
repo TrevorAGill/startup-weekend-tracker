@@ -48,15 +48,15 @@ public class Sql2oEventDaoTest {
         eventDao.addEvent(newEvent);
         assertNotEquals(localEventId,newEvent.getId());
     }
-//
-//    @Test
-//    public void findEventById() throws Exception {
-//        Event newEvent = newEvent();
-//        EventDao.addEvent(newEvent);
-//        int thisId = newEvent.getId();
-//        Event foundEvent = EventDao.findEventById(thisId);
-//        assertEquals(thisId, foundEvent.getId());
-//    }
+
+    @Test
+    public void findEventById() throws Exception {
+        Event newEvent = newEvent();
+        eventDao.addEvent(newEvent);
+        int thisId = newEvent.getId();
+        Event foundEvent = eventDao.findEventById(thisId);
+        assertEquals(thisId, foundEvent.getId());
+    }
 //
 //    @Test
 //    public void returnListOfAllEvents() throws Exception {

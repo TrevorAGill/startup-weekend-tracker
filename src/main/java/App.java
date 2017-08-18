@@ -105,7 +105,7 @@ public class App {
             model.put("attendees", attendees);
 
             return new ModelAndView(model, "event-detail.hbs");
-        }, new HandlebarsTemplateEngin());
+        }, new HandlebarsTemplateEngine());
 
 
     }

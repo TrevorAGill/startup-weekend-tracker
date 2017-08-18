@@ -36,30 +36,18 @@ public class Sql2oEventDaoTest {
     }
 
     @Test
-    public void getNameFromNewEvent_PCT () throws Exception {
+    public void getNameFromNewEvent_UtilizingDao () throws Exception {
         Event newEvent = newEvent();
         assertEquals("Utilizing DAO",newEvent.getName());
     }
 
-//    @Test
-//    public void getNameFromNewEvent_UtilizingDAO () throws Exception {
-//        Event newEvent = newEvent();
-//        assertEquals(3,newEvent.getDifficulty());
-//    }
-//
-//    @Test
-//    public void getRatingFromNewEvent_PCT () throws Exception {
-//        Event newEvent = newEvent();
-//        assertEquals(5,newEvent.getRating());
-//    }
-//
-//    @Test
-//    public void getId_and_addEventingEventSetsId () throws Exception {
-//        Event newEvent = newEvent();
-//        int localEventId = newEvent.getId();
-//        EventDao.addEvent(newEvent);
-//        assertNotEquals(localEventId,newEvent.getId());
-//    }
+    @Test
+    public void getId_and_addEventingEventSetsId () throws Exception {
+        Event newEvent = newEvent();
+        int localEventId = newEvent.getId();
+        eventDao.addEvent(newEvent);
+        assertNotEquals(localEventId,newEvent.getId());
+    }
 //
 //    @Test
 //    public void findEventById() throws Exception {

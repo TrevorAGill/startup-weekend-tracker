@@ -126,5 +126,52 @@ public class App {
             return new ModelAndView(model, "event-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
+        //load attendee edit form
+        get("/event/:eventId/attendee/:id/edit", (req, res) -> {
+            Map<String,Object> model = new HashMap<>();
+            int attendeeId = Integer.parseInt(req.params("id"));
+            Attendee attendee = attendeeDao.findAttendeeById(attendeeId);
+            int eventId = Integer.parseInt(req.params("eventId"));
+            model.put("eventId",eventId);
+            model.put("attendee",attendee);
+            return new ModelAndView(model, "attendee-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //post edited attendee
+        post("/event/:eventId/attendee/:id/edit", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String attendeeName = req.queryParams("attendeeName");
+            String attendeeCompany = req.queryParams("attendeeCompany");
+            String attendeeEmail = req.queryParams("attendeeEmail");
+            int attendeeAge = Integer.parseInt(req.queryParams("attendeeAge"));
+            int eventId = Integer.parseInt(req.params("eventId"));
+            int id = Integer.parseInt(req.params("id"));
+            Event event = eventDao.findEventById(eventId);
+            int attendeeCount = event.getAttendeeCount();
+            attendeeDao.updateAttendee(attendeeName,attendeeCompany,attendeeEmail,attendeeAge,eventId,id);
+            res.redirect("/event/" + eventId);
+            return null;
+        });
+
+        //post edited attendee
+        get("/event/:foundEvent.id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int id = Integer.parseInt(req.params("id"));
+            Event event = eventDao.findEventById(eventId);
+            int attendeeCount = event.getAttendeeCount();
+            attendeeDao.updateAttendee(attendeeName,attendeeCompany,attendeeEmail,attendeeAge,eventId,id);
+            res.redirect("/event/" + eventId);
+            return null;
+        });
+
+        //delete event
+        get("/event/:id/delete", (req, res)->{
+            Map<String, Object> model = new HashMap<>();
+            int eventIdToDelete = Integer.parseInt(req.params("id"));
+            eventDao.deleteEventById(eventIdToDelete);
+            res.redirect("/events");
+            return null;
+        });
+
     }
 }

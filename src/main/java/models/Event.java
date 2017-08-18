@@ -8,20 +8,17 @@ public class Event {
     int id;
     private String name;
     private String description;
-    private ArrayList<Attendee> allAttendees;
-    private static ArrayList<Event> allEvents = new ArrayList<Event>();
-    private static int eventListSize;
+//    private ArrayList<Attendee> allAttendees;
+//    private static ArrayList<Event> allEvents = new ArrayList<Event>();
+//    private static int eventListSize;
     private int attendeeCount;
 
     //Constructor
     public Event(String name,String description){
         this.name = name;
         this.description = description;
-        this.allAttendees = new ArrayList<Attendee>();
-        eventListSize++;
-        this.id = eventListSize;
-        allEvents.add(this);
-        this.attendeeCount = allAttendees.size();
+
+//        this.attendeeCount = allAttendees.size();
     }
 
     public static Event createNewEvent(){

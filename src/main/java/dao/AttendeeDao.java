@@ -7,19 +7,19 @@ import java.util.List;
 public interface AttendeeDao {
 
     //create
-    void add (Attendee attendee);
+    void addAttendee (Attendee attendee);
 
     //read
-    List<Attendee> getAll();
+    List<Attendee> getAllAttendees();
 
-    List<Attendee> getAllByEvent(int eventId);
+    List<Attendee> getAllAttendeesByEvent(int eventId);
 
     //find by id
-    Attendee findById(int id);
+    Attendee findAttendeeById(int id);
 
     //update
-    void update(String name, String company, String email, int age, int eventId, int id);
+    void updateAttendee(String name, String company, String email, int age, int eventId, int id);
 
     //delete
-    void deleteById(int id);
+    void deleteAttendeeById(int id);
 }

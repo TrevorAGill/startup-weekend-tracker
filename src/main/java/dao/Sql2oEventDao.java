@@ -16,7 +16,7 @@ public class Sql2oEventDao implements EventDao {
 
     @Override
     public void addEvent(Event event) {
-        String sql = "INSERT INTO tours (name, description) VALUES (:name, :description)";
+        String sql = "INSERT INTO events (name, description) VALUES (:name, :description)";
         try(Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
                     .addParameter("name", event.getName())

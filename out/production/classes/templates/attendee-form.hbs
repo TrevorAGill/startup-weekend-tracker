@@ -2,7 +2,7 @@
 
         <div class="well">
             <h1>Add an Attendee</h1>
-            <form action="/attendee/new" method="post">
+            <form action="/event/{{id}}/attendee/new" method="post">
                 <div class ="form-group">
                     <label for="attendeeName">Name</label>
                     <input id="attendeeName" name="attendeeName" type="text">

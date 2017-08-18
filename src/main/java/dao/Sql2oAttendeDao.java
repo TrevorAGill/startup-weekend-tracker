@@ -16,7 +16,7 @@ public class Sql2oAttendeDao implements AttendeeDao{
     }
 
     @Override
-    public void add(Attendee attendee) {
+    public void addAttendee(Attendee attendee) {
         String sql = "INSERT INTO attendees (name, company, email, age, eventId) VALUES (:name, :company, :email, :age, :eventId)";
         try(Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
@@ -39,7 +39,7 @@ public class Sql2oAttendeDao implements AttendeeDao{
     }
 
     @Override
-    public List<Attendee> getAll() {
+    public List<Attendee> getAllAttendees() {
         try(Connection con = sql2o.open()) {
             return con.createQuery("SELECT * FROM attendees")
                     .executeAndFetch(Attendee.class);
@@ -47,7 +47,7 @@ public class Sql2oAttendeDao implements AttendeeDao{
     }
 
     @Override
-    public List<Attendee> getAllByEvent(int eventId) {
+    public List<Attendee> getAllAttendeesByEvent(int eventId) {
         try(Connection con = sql2o.open()) {
             return con.createQuery("SELECT * FROM attendees WHERE eventId = :eventId")
                     .addParameter("eventId", eventId)
@@ -57,7 +57,7 @@ public class Sql2oAttendeDao implements AttendeeDao{
     }
 
     @Override
-    public Attendee findById(int id) {
+    public Attendee findAttendeeById(int id) {
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM attendees WHERE id = :id")
                     .addParameter("id", id)
@@ -66,7 +66,7 @@ public class Sql2oAttendeDao implements AttendeeDao{
     }
 
     @Override
-    public void update(String name, String company, String email, int age, int eventId, int id) {
+    public void updateAttendee(String name, String company, String email, int age, int eventId, int id) {
         try (Connection con = sql2o.open()) {
             con.createQuery("UPDATE attendees SET (name, company, email, age, eventId) = (:name, :company, :email, :age, :eventId) WHERE id = :id")
                     .addParameter("name", name)
@@ -83,7 +83,7 @@ public class Sql2oAttendeDao implements AttendeeDao{
 
 
     @Override
-    public void deleteById(int id) {
+    public void deleteAttendeeById(int id) {
         try (Connection con = sql2o.open()) {
             con.createQuery("DELETE FROM attendees WHERE id = :id")
                     .addParameter("id", id)

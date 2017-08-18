@@ -12,15 +12,13 @@ import static org.junit.Assert.*;
 public class Sql2oEventDaoTest {
 
     private Sql2oEventDao eventDao;
-    private Connection conn; //must be sql2o class conn
+    private Connection conn;
     
     @Before
     public void setUp() throws Exception {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         eventDao = new Sql2oEventDao(sql2o);
-
-        //keep connection open through entire test so it does not get erased.
         conn = sql2o.open();
     }
 
@@ -87,10 +85,8 @@ public class Sql2oEventDaoTest {
         assertEquals(0, eventDao.getAllEvents().size());
     }
 
-
     //helper
     public Event newEvent() {
         return new Event("Utilizing DAO", "How to use DAO");
     }
-
 }

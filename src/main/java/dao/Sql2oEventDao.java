@@ -72,16 +72,4 @@ public class Sql2oEventDao implements EventDao {
             System.out.println(ex);
         }
     }
-
-    @Override
-    public void incrementAttendeeCount(int id, int attendeeCount){
-        try (Connection con = sql2o.open()) {
-            con.createQuery("UPDATE events SET (attendeeCount) WHERE id = :id")
-                    .addParameter("id", id)
-                    .addParameter("attendeeCount", attendeeCount)
-                    .executeUpdate();
-        } catch (Sql2oException ex) {
-            System.out.println(ex);
-        }
-    }
 }

@@ -1,11 +1,11 @@
 {{#partial "content"}}
 
-    <ul class="nav nav-tabs">
-        <li role="presentation"><a href="/">Home</a></li>
-        <li role="presentation"><a href="/events">Event Listing</a></li>
-        <li role="presentation" class="active"><a href="/event/new">Add New Event</a></li>
-    </ul>
     {{#if editEvent}}
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="/">Home</a></li>
+            <li role="presentation"><a href="/events">Event Listing</a></li>
+            <li role="presentation" class="active"><a href="#">Event: {{editEvent.name}}</a></li>
+        </ul>
 
         <div class="well">
             <h1>Edit Event: {{editEvent.name}}</h1>
@@ -23,6 +23,11 @@
         </div>
 
     {{else}}
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="/">Home</a></li>
+            <li role="presentation"><a href="/events">Event Listing</a></li>
+            <li role="presentation" class="active"><a href="#">Add Event</a></li>
+        </ul>
         <div class="well">
             <h1>Add an Event</h1>
             <form action="/event/new" method="post">

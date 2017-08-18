@@ -8,16 +8,12 @@ public class Event {
     private int id;
     private String name;
     private String description;
-//    private ArrayList<Attendee> allAttendees;
-//    private static ArrayList<Event> allEvents = new ArrayList<Event>();
-//    private static int eventListSize;
     private int attendeeCount;
 
     //Constructor
     public Event(String name,String description){
         this.name = name;
         this.description = description;
-//        this.attendeeCount = allAttendees.size();
     }
 
     @Override
@@ -59,22 +55,6 @@ public class Event {
     public void setDescription(String description) {
         this.description = description;
     }
-
-//    public ArrayList<Attendee> getAllAttendees() {
-//        return allAttendees;
-//    }
-//
-//    public void setAllAttendees(Attendee addToEvent) {
-//        allAttendees.add(addToEvent);
-//    }
-//
-//    public static ArrayList<Event> getAllEvents() {
-//        return allEvents;
-//    }
-//
-//    public static void setAllEvents(ArrayList<Event> allEvents) {
-//        Event.allEvents = allEvents;
-//    }
 
     public int getAttendeeCount() {
         return attendeeCount;
